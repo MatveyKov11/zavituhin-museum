@@ -1,0 +1,50 @@
+.heading {
+	margin-top: 30px;
+	text-align: center;
+	font-family: 'Times New Roman', Times, serif;
+	font-weight: bold;
+	font-size: 36px;
+	color: rgb(203 0 0);
+	-webkit-text-stroke: 1px rgb(181 0 0);
+}
+
+.head2 {
+	margin-top: 30px;
+	text-align: center;
+	font-family: 'Times New Roman', Times, serif;
+	font-weight: bold;
+	font-size: 28px;
+	color: rgb(203 0 0);
+	-webkit-text-stroke: 1px rgb(181 0 0);
+}
+
+.chapters {
+	display: flex;
+	justify-content: flex-start;
+	border-bottom: 3px solid #ddc30c;
+	border-top: 3px solid #ddc30c;
+	width: 100%;
+	margin-top: 30px;
+	background-color: rgb(173 0 0);
+}
+
+.chap_button {
+	padding: 24px 32px;
+	font-family: 'Times New Roman', Times, serif;
+	font-weight: bold;
+	font-size: 20px;
+	background-color: rgb(173 0 0);
+	color: #ddc30c;
+	border: 1px solid #ddc30c;
+}
+
+.main_text {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	font-size: 20px;
+	font-family: 'Times New Roman', Times, serif;
+	font-style: italic;
+	margin-left: 5%;
+	margin-top: 1%;
+}

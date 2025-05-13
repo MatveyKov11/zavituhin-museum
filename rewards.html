@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Награды</title>
+	<link href="./rewards.css" rel="stylesheet" type="text/css">
+</head>
+<body background="./images/back3.jpg">
+	<div class="heading"> Онлайн-Музей Завитухина А. А. </div>
+	<div class="chapters">
+		<button class="chap_button" onclick="location.href='./index.html'">Главная</button>
+		<button class="chap_button" onclick="location.href='./bio.html'">Биография</button>
+		<button class="chap_button" onclick="location.href='./rewards.html'">Награды</button>
+		<button class="chap_button" onclick="location.href='./heli.html'">Прогулка на вертолёте</button>
+		<button class="chap_button" onclick="location.href='./photo.html'">Фото</button>
+		<button class="chap_button" onclick="location.href='./herit.html'">Подвиг</button>
+	</div>
+	<div class="main_text">	
+		<p> Повесьте медали на стену </p>
+	</div>
+	<img src="./images/stand.webp" id="stand" class="droppable">
+	<img src="./images/hero.jpg" width=10% id="reward1">
+	<img src="./images/orden.png" width=10% id="reward2">
+	<p id="descript1"> Указом Президента РФ № 1285 от 11.07.2000 г. за мужество и героизм, проявленные при исполнении воинского долга в Северо-Кавказском регионе, майору А. А. Завитухину и капитану А. Ю. Кириллину присвоено звание Героев России (посмертно). «Золотую Звезду» Героя России из рук командующего получил сын майора А. А. Завитухина — Никита. </p>
+	<p id="descript2"> На вертолёте Ми-24 экипаж Андрея Завитухина совершил 214 боевых вылетов (69 часов налёта), в ходе которых уничтожил 1 БТР, 4 опорных пункта, 26 огневых точек, 5 миномётных расчётов, 130 единиц живой силы противника. В результате чего А. А. Завитухин получил звание Кавалера ордена Мужества. </p>
+	<script>
+		let currentDroppable = null;
+
+		reward1.onmousedown = function(event) {
+
+			let shiftX = event.clientX - reward1.getBoundingClientRect().left;
+			let shiftY = event.clientY - reward1.getBoundingClientRect().top;
+
+			reward1.style.position = 'absolute';
+			reward1.style.zIndex = 1000;
+			document.body.append(reward1);
+			
+			moveAt(event.pageX, event.pageY);
+		
+			function moveAt(pageX, pageY) {
+				reward1.style.left = pageX - shiftX + 'px';
+				reward1.style.top = pageY - shiftY + 'px';
+			}
+		
+			function onMouseMove(event) {
+				moveAt(event.pageX, event.pageY);
+
+				reward1.hidden = true;
+				let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
+				reward1.hidden = false;
+
+				if (!elemBelow) return;
+
+				let droppableBelow = elemBelow.closest('.droppable');
+				if (currentDroppable != droppableBelow) {
+					if (currentDroppable) {
+						reward1.style.boxShadow = "0 0 0px #ff0000";
+						descript1.style.display = "none";
+					}
+					currentDroppable = droppableBelow;
+					if (currentDroppable) {
+						reward1.style.boxShadow = "0 0 30px #ff0000";
+					}
+				}
+			}
+
+			document.addEventListener('mousemove', onMouseMove);
+		
+			reward1.onmouseup = function() {
+				if(currentDroppable) {
+					descript1.style.display = "flex";
+					descript2.style.display = "none";
+
+					reward2.style.boxShadow = "0 0 0px #ff0000";
+				}else{
+					descript1.style.display = "none";
+				}
+				document.removeEventListener('mousemove', onMouseMove);
+				reward1.onmouseup = null;
+			};
+
+		};
+
+		reward1.ondragstart = function() {
+      			return false;
+    		};
+
+		reward2.onmousedown = function(event) {
+
+			let shiftX = event.clientX - reward2.getBoundingClientRect().left;
+			let shiftY = event.clientY - reward2.getBoundingClientRect().top;
+
+			reward2.style.position = 'absolute';
+			reward2.style.zIndex = 1000;
+			document.body.append(reward1);
+			
+			moveAt(event.pageX, event.pageY);
+		
+			function moveAt(pageX, pageY) {
+				reward2.style.left = pageX - shiftX + 'px';
+				reward2.style.top = pageY - shiftY + 'px';
+			}
+		
+			function onMouseMove(event) {
+				moveAt(event.pageX, event.pageY);
+
+				reward2.hidden = true;
+				let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
+				reward2.hidden = false;
+
+				if (!elemBelow) return;
+
+				let droppableBelow = elemBelow.closest('.droppable');
+				if (currentDroppable != droppableBelow) {
+					if (currentDroppable) {
+						reward2.style.boxShadow = "0 0 0px #ff0000";
+						descript2.style.display = "none";
+					}
+					currentDroppable = droppableBelow;
+					if (currentDroppable) {
+						reward2.style.boxShadow = "0 0 30px #ff0000";
+					}
+				}
+			}
+
+			document.addEventListener('mousemove', onMouseMove);
+		
+			reward2.onmouseup = function() {
+				if(currentDroppable) {
+					descript2.style.display = "flex";
+					descript1.style.display = "none";
+
+					reward1.style.boxShadow = "0 0 0px #ff0000";
+				}else{
+					descript2.style.display = "none";
+				}
+				document.removeEventListener('mousemove', onMouseMove);
+				reward2.onmouseup = null;
+			};
+
+		};
+
+		reward2.ondragstart = function() {
+      			return false;
+    		};
+	</script>
+</body>
+</html>
